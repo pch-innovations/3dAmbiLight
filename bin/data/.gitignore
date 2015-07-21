@@ -1,0 +1,10 @@
+# do include contents of this folder
+
+!**/*
+
+# but not these
+
+._*
+*.DS_*
+frames?/*.jpg
+frames?/*.tiff
