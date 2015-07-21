@@ -73,13 +73,28 @@ void ofApp::update() {
     ledPixelsC.update();
     ledPixelsR.update();
     
+    /*
     ledPixelsL.getPixelsRef().pasteInto(ledStrip, 0, 0 );
     ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0 );
     ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0 );
+ */
     
-    for (int i = 0; i < LED_STRIP_LENGTH; i++) {
-    //    ledStrip.setColor( i, 0, ofColor::white );
+    for (int i = 0; i < LED_WIDTH_L; i++) {
+        ledStrip.setColor( i, 0, ledPixelsL.getColor( i, 0 ) );
     }
+    for (int i = 0; i < LED_WIDTH_C; i++) {
+        ledStrip.setColor( LED_WIDTH_L + i, 0, ledPixelsC.getColor( i, 0 ) );
+    }
+    for (int i = 0; i < LED_WIDTH_R; i++) {
+        ledStrip.setColor( LED_WIDTH_L + LED_WIDTH_C + i, 0, ledPixelsR.getColor( i, 0 ) );
+    }
+    
+    /*
+    for (int i = 0; i < LED_STRIP_LENGTH; i++) {
+        ledStrip.setColor( i, 0, ofColor::white );
+    }
+     */
+    
     ledStrip.update();
     
     artnet.sendDmx( CONTROLLER_IP,
