@@ -1,28 +1,28 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Folders
 
-# Precompiled Headers
-*.gch
-*.pch
+.svn/
+obj/
+bin/*
+build/
+!bin/data/
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# XCode
 
-# Fortran module files
-*.mod
+*.DS_*
+xcuserdata
+*.mode*v3
+*.pbxuser
+*.app*
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# CodeBlocks
 
-# Executables
-*.exe
-*.out
-*.app
+*.depend
+*.layout
+
+# Visual Studio
+
+*.sdf
+*.opensdf
+*.suo
+*.user
+._*
