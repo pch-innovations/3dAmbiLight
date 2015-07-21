@@ -7,9 +7,9 @@
 int main( ){
 #ifndef TARGET_LINUX_ARM
     ofAppGlutWindow window;
-	ofSetupOpenGL(&window, 1024,768, OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(&window, 1200, 800, OF_WINDOW);			// <-------- setup the GL context
 #else
-	ofSetupOpenGL(1024,768,OF_WINDOW);
+	ofSetupOpenGL(1200,800,OF_WINDOW);
 #endif
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
