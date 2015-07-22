@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		02D13E8714BC3AA20005E779 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02D13E8614BC3AA20005E779 /* ofxArtnet.cpp */; };
-		65F1D8F41B5D448300108555 /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8E81B5D448300108555 /* artnet.c */; };
-		65F1D8F51B5D448300108555 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8EB1B5D448300108555 /* misc.c */; };
-		65F1D8F61B5D448300108555 /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8ED1B5D448300108555 /* network.c */; };
-		65F1D8F71B5D448300108555 /* receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8F01B5D448300108555 /* receive.c */; };
-		65F1D8F81B5D448300108555 /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8F11B5D448300108555 /* tod.c */; };
-		65F1D8F91B5D448300108555 /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1D8F31B5D448300108555 /* transmit.c */; };
-		65F1D8FB1B5D455900108555 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F1D8FA1B5D455900108555 /* QuickTime.framework */; };
-		65F1D8FF1B5D46B700108555 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F1D8FE1B5D46B700108555 /* Accelerate.framework */; };
-		65F1D9001B5D46BE00108555 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F1D8FC1B5D456A00108555 /* QTKit.framework */; };
-		65F1D9011B5D46C800108555 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3BD191B5D050E0026CD70 /* CoreVideo.framework */; };
+		6579D4241B5EA11E007A3D02 /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D4181B5EA11E007A3D02 /* artnet.c */; };
+		6579D4251B5EA11E007A3D02 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D41B1B5EA11E007A3D02 /* misc.c */; };
+		6579D4261B5EA11E007A3D02 /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D41D1B5EA11E007A3D02 /* network.c */; };
+		6579D4271B5EA11E007A3D02 /* receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D4201B5EA11E007A3D02 /* receive.c */; };
+		6579D4281B5EA11E007A3D02 /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D4211B5EA11E007A3D02 /* tod.c */; };
+		6579D4291B5EA11E007A3D02 /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 6579D4231B5EA11E007A3D02 /* transmit.c */; };
+		6579D42B1B5EA13D007A3D02 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6579D42A1B5EA13D007A3D02 /* Accelerate.framework */; };
+		6579D42D1B5EA146007A3D02 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6579D42C1B5EA146007A3D02 /* QuickTime.framework */; };
+		6579D42F1B5EA14D007A3D02 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6579D42E1B5EA14D007A3D02 /* QTKit.framework */; };
+		6579D4311B5EA156007A3D02 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6579D4301B5EA156007A3D02 /* CoreVideo.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -68,25 +68,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		02C37ED8153C638600680767 /* ofxArtnetExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ofxArtnetExample.app; path = /Users/andre/Documents/Code/of_v0.8.4_osx_release/apps/VWGrandHolo/3dAmbiLight/bin/ofxArtnetExample.app; sourceTree = "<absolute>"; };
+		02C37ED8153C638600680767 /* 3dAmbiLightDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3dAmbiLightDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D13E8614BC3AA20005E779 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
 		02D13E8814BC3AAC0005E779 /* ofxArtnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxArtnet.h; sourceTree = "<group>"; };
-		65B3BD191B5D050E0026CD70 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		65F1D8E81B5D448300108555 /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = artnet.c; path = ../../../../addons/ofxArtnet/libs/artnet/artnet.c; sourceTree = "<group>"; };
-		65F1D8E91B5D448300108555 /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = artnet.h; path = ../../../../addons/ofxArtnet/libs/artnet/artnet.h; sourceTree = "<group>"; };
-		65F1D8EA1B5D448300108555 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../../../../addons/ofxArtnet/libs/artnet/common.h; sourceTree = "<group>"; };
-		65F1D8EB1B5D448300108555 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = misc.c; path = ../../../../addons/ofxArtnet/libs/artnet/misc.c; sourceTree = "<group>"; };
-		65F1D8EC1B5D448300108555 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = misc.h; path = ../../../../addons/ofxArtnet/libs/artnet/misc.h; sourceTree = "<group>"; };
-		65F1D8ED1B5D448300108555 /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = network.c; path = ../../../../addons/ofxArtnet/libs/artnet/network.c; sourceTree = "<group>"; };
-		65F1D8EE1B5D448300108555 /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = packets.h; path = ../../../../addons/ofxArtnet/libs/artnet/packets.h; sourceTree = "<group>"; };
-		65F1D8EF1B5D448300108555 /* private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = private.h; path = ../../../../addons/ofxArtnet/libs/artnet/private.h; sourceTree = "<group>"; };
-		65F1D8F01B5D448300108555 /* receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = receive.c; path = ../../../../addons/ofxArtnet/libs/artnet/receive.c; sourceTree = "<group>"; };
-		65F1D8F11B5D448300108555 /* tod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tod.c; path = ../../../../addons/ofxArtnet/libs/artnet/tod.c; sourceTree = "<group>"; };
-		65F1D8F21B5D448300108555 /* tod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tod.h; path = ../../../../addons/ofxArtnet/libs/artnet/tod.h; sourceTree = "<group>"; };
-		65F1D8F31B5D448300108555 /* transmit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = transmit.c; path = ../../../../addons/ofxArtnet/libs/artnet/transmit.c; sourceTree = "<group>"; };
-		65F1D8FA1B5D455900108555 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
-		65F1D8FC1B5D456A00108555 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
-		65F1D8FE1B5D46B700108555 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6579D4181B5EA11E007A3D02 /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
+		6579D4191B5EA11E007A3D02 /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
+		6579D41A1B5EA11E007A3D02 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		6579D41B1B5EA11E007A3D02 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
+		6579D41C1B5EA11E007A3D02 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		6579D41D1B5EA11E007A3D02 /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = network.c; sourceTree = "<group>"; };
+		6579D41E1B5EA11E007A3D02 /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packets.h; sourceTree = "<group>"; };
+		6579D41F1B5EA11E007A3D02 /* private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private.h; sourceTree = "<group>"; };
+		6579D4201B5EA11E007A3D02 /* receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = receive.c; sourceTree = "<group>"; };
+		6579D4211B5EA11E007A3D02 /* tod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tod.c; sourceTree = "<group>"; };
+		6579D4221B5EA11E007A3D02 /* tod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tod.h; sourceTree = "<group>"; };
+		6579D4231B5EA11E007A3D02 /* transmit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = transmit.c; sourceTree = "<group>"; };
+		6579D42A1B5EA13D007A3D02 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6579D42C1B5EA146007A3D02 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		6579D42E1B5EA14D007A3D02 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		6579D4301B5EA156007A3D02 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -114,10 +114,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F1D9011B5D46C800108555 /* CoreVideo.framework in Frameworks */,
-				65F1D9001B5D46BE00108555 /* QTKit.framework in Frameworks */,
-				65F1D8FF1B5D46B700108555 /* Accelerate.framework in Frameworks */,
-				65F1D8FB1B5D455900108555 /* QuickTime.framework in Frameworks */,
+				6579D4311B5EA156007A3D02 /* CoreVideo.framework in Frameworks */,
+				6579D42F1B5EA14D007A3D02 /* QTKit.framework in Frameworks */,
+				6579D42D1B5EA146007A3D02 /* QuickTime.framework in Frameworks */,
+				6579D42B1B5EA13D007A3D02 /* Accelerate.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -168,22 +168,21 @@
 		1B3818C616DB45A80044AB52 /* artnet */ = {
 			isa = PBXGroup;
 			children = (
-				65F1D8E81B5D448300108555 /* artnet.c */,
-				65F1D8E91B5D448300108555 /* artnet.h */,
-				65F1D8EA1B5D448300108555 /* common.h */,
-				65F1D8EB1B5D448300108555 /* misc.c */,
-				65F1D8EC1B5D448300108555 /* misc.h */,
-				65F1D8ED1B5D448300108555 /* network.c */,
-				65F1D8EE1B5D448300108555 /* packets.h */,
-				65F1D8EF1B5D448300108555 /* private.h */,
-				65F1D8F01B5D448300108555 /* receive.c */,
-				65F1D8F11B5D448300108555 /* tod.c */,
-				65F1D8F21B5D448300108555 /* tod.h */,
-				65F1D8F31B5D448300108555 /* transmit.c */,
+				6579D4181B5EA11E007A3D02 /* artnet.c */,
+				6579D4191B5EA11E007A3D02 /* artnet.h */,
+				6579D41A1B5EA11E007A3D02 /* common.h */,
+				6579D41B1B5EA11E007A3D02 /* misc.c */,
+				6579D41C1B5EA11E007A3D02 /* misc.h */,
+				6579D41D1B5EA11E007A3D02 /* network.c */,
+				6579D41E1B5EA11E007A3D02 /* packets.h */,
+				6579D41F1B5EA11E007A3D02 /* private.h */,
+				6579D4201B5EA11E007A3D02 /* receive.c */,
+				6579D4211B5EA11E007A3D02 /* tod.c */,
+				6579D4221B5EA11E007A3D02 /* tod.h */,
+				6579D4231B5EA11E007A3D02 /* transmit.c */,
 			);
-			name = artnet;
-			path = ../libs/artnet;
-			sourceTree = SOURCE_ROOT;
+			path = artnet;
+			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
@@ -240,16 +239,17 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				65F1D8FE1B5D46B700108555 /* Accelerate.framework */,
-				65F1D8FC1B5D456A00108555 /* QTKit.framework */,
-				65F1D8FA1B5D455900108555 /* QuickTime.framework */,
-				65B3BD191B5D050E0026CD70 /* CoreVideo.framework */,
+				6579D4301B5EA156007A3D02 /* CoreVideo.framework */,
+				6579D42E1B5EA14D007A3D02 /* QTKit.framework */,
+				6579D42C1B5EA146007A3D02 /* QuickTime.framework */,
+				6579D42A1B5EA13D007A3D02 /* Accelerate.framework */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
+				02C37ED8153C638600680767 /* 3dAmbiLightDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,7 +291,7 @@
 			);
 			name = 3dAmbiLight;
 			productName = myOFApp;
-			productReference = 02C37ED8153C638600680767 /* ofxArtnetExample.app */;
+			productReference = 02C37ED8153C638600680767 /* 3dAmbiLightDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -358,15 +358,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F1D8F61B5D448300108555 /* network.c in Sources */,
-				65F1D8F51B5D448300108555 /* misc.c in Sources */,
+				6579D4261B5EA11E007A3D02 /* network.c in Sources */,
+				6579D4251B5EA11E007A3D02 /* misc.c in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				65F1D8F71B5D448300108555 /* receive.c in Sources */,
-				65F1D8F91B5D448300108555 /* transmit.c in Sources */,
-				65F1D8F81B5D448300108555 /* tod.c in Sources */,
+				6579D4271B5EA11E007A3D02 /* receive.c in Sources */,
+				6579D4291B5EA11E007A3D02 /* transmit.c in Sources */,
+				6579D4281B5EA11E007A3D02 /* tod.c in Sources */,
 				02D13E8714BC3AA20005E779 /* ofxArtnet.cpp in Sources */,
-				65F1D8F41B5D448300108555 /* artnet.c in Sources */,
+				6579D4241B5EA11E007A3D02 /* artnet.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +519,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				PRODUCT_NAME = 3dAmbiLightDebug;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -606,7 +606,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = 3dAmbiLight;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};

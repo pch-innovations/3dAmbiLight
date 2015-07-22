@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>555200C1-B2BF-4647-A3E7-5B6A1E9C907A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>3dAmbiLight</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>04607A19C15D5B5F2D42C051F4E65BD41CF01B30</key>
+		<string>https://github.com/pch-innovations/3dAmbiLight.git</string>
+		<key>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</key>
+		<string>https://github.com/aknoerig/ofxArtnet.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>3dAmbiLight.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>04607A19C15D5B5F2D42C051F4E65BD41CF01B30</key>
+		<string>../..</string>
+		<key>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</key>
+		<string>../../../../../addons/ofxArtnet</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pch-innovations/3dAmbiLight.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>04607A19C15D5B5F2D42C051F4E65BD41CF01B30</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>04607A19C15D5B5F2D42C051F4E65BD41CF01B30</string>
+			<key>IDESourceControlWCCName</key>
+			<string>3dAmbiLight</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxArtnet</string>
+		</dict>
+	</array>
+</dict>
+</plist>
