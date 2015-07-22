@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxArtnet.h"
+#include "ofxGui.h"
 
 
 class ofApp : public ofBaseApp{
@@ -13,10 +14,6 @@ class ofApp : public ofBaseApp{
     const int LED_WIDTH_C = 40;
     const int LED_WIDTH_R = 40;
     const int LED_STRIP_LENGTH = 120;
-    
-    const float BRIGHTNESS_L = 10.0; // multiplication factor
-    const float BRIGHTNESS_C = 10.0;
-    const float BRIGHTNESS_R = 10.0;
     
 public:
     void setup();
@@ -37,4 +34,12 @@ public:
     
     ofImage ledStrip, ledPixelsL, ledPixelsC, ledPixelsR;
     ofVideoPlayer playerL, playerC, playerR;
+    
+    ofParameter<float> brightnessL, brightnessC, brightnessR;
+    ofParameter<float> saturationL, saturationC, saturationR;
+    ofParameter<int> scanYL, scanYC, scanYR;
+    
+    ofxPanel gui;
+    bool bShowGui;
+    
 };
