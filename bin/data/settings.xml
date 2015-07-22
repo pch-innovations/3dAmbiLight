@@ -1,0 +1,11 @@
+<3D_Ambilight>
+	<Brightness_Left>1</Brightness_Left>
+	<Brightness_Center>1</Brightness_Center>
+	<Brightness_Right>1</Brightness_Right>
+	<Saturation_Left>1</Saturation_Left>
+	<Saturation_Center>1</Saturation_Center>
+	<Saturation_Right>1</Saturation_Right>
+	<Scan_Row_Left>10</Scan_Row_Left>
+	<Scan_Row_Center>103</Scan_Row_Center>
+	<Scan_Row_Right>79</Scan_Row_Right>
+</3D_Ambilight>

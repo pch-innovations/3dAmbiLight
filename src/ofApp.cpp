@@ -23,6 +23,7 @@ void ofApp::setup() {
     ofSetFrameRate( 30 );
     
     
+    
     ledPixelsL.allocate( LED_WIDTH_L, 1, OF_IMAGE_COLOR );
     ledPixelsC.allocate( LED_WIDTH_C, 1, OF_IMAGE_COLOR );
     ledPixelsR.allocate( LED_WIDTH_R, 1, OF_IMAGE_COLOR );
@@ -37,6 +38,22 @@ void ofApp::setup() {
     playerR.loadMovie( "movies/boost_blue_320.mp4" );
     playerR.play();
     
+    
+    gui.setup("3D Ambilight");
+    bShowGui = true;
+    
+    gui.add( brightnessL.set( "Brightness Left", 1.0, 0, 10 ) );
+    gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
+    gui.add( scanYL.set( "Scan Row Left", playerL.getHeight() / 2, 0, playerL.getHeight() ) );
+    
+    gui.add( brightnessC.set( "Brightness Center", 1.0, 0, 10 ) );
+    gui.add( saturationC.set( "Saturation Center", 1.0, 0, 5 ) );
+    gui.add( scanYC.set( "Scan Row Center", playerC.getHeight() / 2, 0, playerC.getHeight() ) );
+    
+    gui.add( brightnessR.set( "Brightness Right", 1.0, 0, 10 ) );
+    gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
+    gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
+    
 }
 
 //--------------------------------------------------------------
@@ -48,25 +65,27 @@ void ofApp::update() {
     playerR.update();
     
     //playerL.getPixelsRef().resizeTo( ledPixelsL, OF_INTERPOLATE_NEAREST_NEIGHBOR );
-    playerL.getPixelsRef().cropTo( ledPixelsL, 0, 10, 40, 1);
-    
-    playerC.getPixelsRef().resizeTo( ledPixelsC, OF_INTERPOLATE_NEAREST_NEIGHBOR );
-    playerR.getPixelsRef().resizeTo( ledPixelsR, OF_INTERPOLATE_NEAREST_NEIGHBOR );
+    playerL.getPixelsRef().cropTo( ledPixelsL, 0, scanYL, LED_WIDTH_L, 1);
+    playerC.getPixelsRef().cropTo( ledPixelsC, 0, scanYL, LED_WIDTH_C, 1);
+    playerR.getPixelsRef().cropTo( ledPixelsR, 0, scanYL, LED_WIDTH_R, 1);
     
     
     for (int i = 0; i < LED_WIDTH_L; i++) {
         ofColor c = ledPixelsL.getColor( i, 0 );
-        c.setBrightness( c.getBrightness() * BRIGHTNESS_L );
+        c.setBrightness( c.getBrightness() * brightnessL );
+        c.setSaturation( c.getSaturation() * saturationL );
         ledPixelsL.setColor( i, 0, c );
     }
     for (int i = 0; i < LED_WIDTH_C; i++) {
         ofColor c = ledPixelsC.getColor( i, 0 );
-        c.setBrightness( c.getBrightness() * BRIGHTNESS_C );
+        c.setBrightness( c.getBrightness() * brightnessC );
+        c.setSaturation( c.getSaturation() * saturationC );
         ledPixelsC.setColor( i, 0, c );
     }
     for (int i = 0; i < LED_WIDTH_R; i++) {
         ofColor c = ledPixelsR.getColor( i, 0 );
-        c.setBrightness( c.getBrightness() * BRIGHTNESS_R );
+        c.setBrightness( c.getBrightness() * brightnessR );
+        c.setSaturation( c.getSaturation() * saturationR );
         ledPixelsR.setColor( i, 0, c );
     }
     
@@ -74,23 +93,9 @@ void ofApp::update() {
     ledPixelsC.update();
     ledPixelsR.update();
     
-    
     ledPixelsL.getPixelsRef().pasteInto(ledStrip, 0, 0 );
     ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0 );
     ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0 );
-     
-    /*
-    for (int i = 0; i < LED_WIDTH_L; i++) {
-        ledStrip.setColor( i, 0, ledPixelsL.getColor( i, 0 ) );
-    }
-    for (int i = 0; i < LED_WIDTH_C; i++) {
-        ledStrip.setColor( LED_WIDTH_L + i, 0, ledPixelsC.getColor( i, 0 ) );
-    }
-    for (int i = 0; i < LED_WIDTH_R; i++) {
-        ledStrip.setColor( LED_WIDTH_L + LED_WIDTH_C + i, 0, ledPixelsR.getColor( i, 0 ) );
-    }
-     */
-
     
     ledStrip.update();
     
@@ -103,21 +108,59 @@ void ofApp::update() {
 void ofApp::draw(){
     ofBackground(0);
     
-    //ledStrip.draw( 0, 0, LED_STRIP_LENGTH*8, 1*8 );
     
-    playerL.draw(0, 20, playerL.getWidth() * 8, playerL.getHeight() * 8);
+    int scaleL = 8;
+    playerL.draw( 0, 20, playerL.getWidth() * 8, playerL.getHeight() * 8);
     ledPixelsL.draw( 0, 400, LED_WIDTH_L*8, 1*8 );
     
-    playerC.draw(400, 20);
+    ofPushStyle();
+    ofSetColor( ofColor::white );
+    ofNoFill();
+    ofRect( 0, 20 + scanYL * 8, LED_WIDTH_L * 8, 8 );
+    ofPopStyle();
+    
+    
+    int scaleC = 1;
+    playerC.draw(400, 20, playerC.getWidth() * scaleC,  playerC.getHeight() * scaleC);
     ledPixelsC.draw( 400, 400, LED_WIDTH_C*8, 1*8 );
     
-    playerR.draw(800, 20);
+    ofPushStyle();
+    ofSetColor( ofColor::white );
+    ofNoFill();
+    ofRect( 400, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, 8 );
+    ofPopStyle();
+    
+    
+    int scaleR = 1;
+    playerR.draw(800, 20, playerR.getWidth() * scaleR,  playerR.getHeight() * scaleR);
     ledPixelsR.draw( 800, 400, LED_WIDTH_R*8, 1*8 );
+    
+    ofPushStyle();
+    ofSetColor( ofColor::white );
+    ofNoFill();
+    ofRect( 800, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, 8 );
+    ofPopStyle();
+    
+    
+    
+    if ( bShowGui )
+        gui.draw();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
+    switch (key) {
+        case 'f':
+            ofToggleFullscreen();
+            break;
+        case OF_KEY_TAB:
+            bShowGui = !bShowGui;
+            break;
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
