@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/andre/Documents/Code/of_v0.8.4_osx_release/apps/VWGrandHolo/3dAmbiLight/3dAmbiLight.xcodeproj">
+      location = "self:/Users/andre/Documents/Code/of_v0.8.4_osx_release/apps/VWGrandHolo/example/3dAmbiLight.xcodeproj">
    </FileRef>
 </Workspace>

@@ -5,27 +5,31 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A6B86158-8B34-4104-9A75-DC50365D2E79</string>
+	<string>99318E09-00F9-4192-90E2-2A92729A3CC8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ofxArtnetExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
+		<string>https://github.com/openframeworks/openFrameworks.git</string>
 		<key>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</key>
-		<string>https://github.com/hiroyuki/ofxArtnet.git</string>
+		<string>https://github.com/aknoerig/ofxArtnet.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example/ofxArtnetExample.xcodeproj</string>
+	<string>apps/VWGrandHolo/example/ofxArtnetExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
+		<string>../../../../..</string>
 		<key>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</key>
-		<string>../../..</string>
+		<string>../../../../..addons/ofxArtnet/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/hiroyuki/ofxArtnet.git</string>
+	<string>https://github.com/openframeworks/openFrameworks.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</string>
+	<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxArtnet</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>openFrameworks</string>
 		</dict>
 	</array>
 </dict>

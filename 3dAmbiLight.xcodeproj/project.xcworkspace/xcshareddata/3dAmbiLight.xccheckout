@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D039E3A2-CFCB-4964-A121-91322537CB75</string>
+	<string>555200C1-B2BF-4647-A3E7-5B6A1E9C907A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>3dAmbiLight</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -22,7 +22,7 @@
 		<key>04607A19C15D5B5F2D42C051F4E65BD41CF01B30</key>
 		<string>../..</string>
 		<key>3F2DE5DB699805D0DBD2A598DC1E5F4D06AE884A</key>
-		<string>../../../addons/ofxArtnet</string>
+		<string>../../../../../addons/ofxArtnet</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/pch-innovations/3dAmbiLight.git</string>
