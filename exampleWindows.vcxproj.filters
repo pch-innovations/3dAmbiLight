@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\testApp.cpp">
+    <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -10,23 +10,47 @@
     <ClCompile Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.cpp">
       <Filter>addons\ofxArtnet\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\artnet.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\artnet.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\misc.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\misc.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\network.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\network.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\receive.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\receive.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\tod.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\tod.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\transmit.c">
-      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\transmit.c">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+      <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,40 +72,64 @@
     <Filter Include="addons\ofxArtnet\libs\artnet">
       <UniqueIdentifier>{ffca0b30-f90b-63f9-ba8d-f94496a7b90c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxArtnet\libs\artnet\include">
-      <UniqueIdentifier>{f81d254f-9dff-085b-8759-a151f1a4c734}</UniqueIdentifier>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{b4f1e27d-0130-4f59-ab50-220fdde93c64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxArtnet\libs\artnet\src">
-      <UniqueIdentifier>{d1ceefa5-8343-2283-fe7d-153f80044811}</UniqueIdentifier>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{74a595a5-35c8-4bef-9f3e-53a56530475e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\testApp.h">
+    <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.h">
       <Filter>addons\ofxArtnet\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\artnet.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\artnet.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\common.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\common.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\misc.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\misc.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\packets.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\packets.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\private.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\private.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\tod.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\tod.h">
+      <Filter>addons\ofxArtnet\libs\artnet</Filter>
     </ClInclude>
-    <ClInclude Include="..\libs\artnet\include\unistd_d.h">
-      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+      <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
