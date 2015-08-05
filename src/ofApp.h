@@ -5,15 +5,6 @@
 #include "ofxGui.h"
 
 
-const char* MY_IP = "10.0.0.1";
-const char* CONTROLLER_IP = "10.7.159.92";
-    
-const int LED_WIDTH_L = 40; // number of leds for strip 1
-const int LED_WIDTH_C = 40;
-const int LED_WIDTH_R = 40;
-const int LED_STRIP_LENGTH = 120;
-
-
 class ofApp : public ofBaseApp{
     
 public:
