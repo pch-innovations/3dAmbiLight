@@ -59,7 +59,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\src;..\..\..\addons\ofxArtnet\libs;..\..\..\addons\ofxArtnet\src;..\..\..\addons\ofxArtnet\libs\artnet;..\..\..\addons\ofxArtnet\libs\artnet\include;..\..\..\addons\ofxArtnet\libs\artnet\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxArtnet\libs;..\..\..\addons\ofxArtnet\src;..\..\..\addons\ofxArtnet\libs\artnet;..\..\..\addons\ofxArtnet\libs\artnet\include;..\..\..\addons\ofxArtnet\libs\artnet\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -99,6 +99,10 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.cpp" />
@@ -119,6 +123,12 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.h" />
     <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\artnet.h" />

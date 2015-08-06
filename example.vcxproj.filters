@@ -52,6 +52,18 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -83,6 +95,12 @@
     </Filter>
     <Filter Include="addons\ofxGui\src">
       <UniqueIdentifier>{37661848-a427-4188-9c7a-8dac9c360ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork">
+      <UniqueIdentifier>{b102674d-0253-4ffa-81a7-1bf7f1287663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork\src">
+      <UniqueIdentifier>{8473b7db-15e2-4eba-b191-61fe52e31636}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +157,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

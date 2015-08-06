@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxArtnet.h"
 #include "ofxGui.h"
+#include "ofxUDPManager.h"
 
 
 class ofApp : public ofBaseApp{

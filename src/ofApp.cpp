@@ -5,9 +5,7 @@
  
  TODO:
  
- - use FBO instead of ofImage, or at least ofPixels?
  - Sync
- - GUI for brightness, crop line
  
  */
 
