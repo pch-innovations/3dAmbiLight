@@ -12,6 +12,7 @@
 
 const char* MY_IP = "10.0.0.1";
 const char* CONTROLLER_IP = "10.7.159.92";
+const int UDP_PORT = 11999;
     
 const int LED_WIDTH_L = 40; // number of leds for strip 1
 const int LED_WIDTH_C = 40;
@@ -23,30 +24,36 @@ const int LED_STRIP_LENGTH = 120;
 void ofApp::setup() {
     
     ofSetVerticalSync( true );
+
+	ofSetFrameRate(30);
+
+
+	// ARTNET / DMX
+    // make sure the firewall is deactivated at this point
     
-    //at first you must specify the Ip address of this machine
-    //make sure the firewall is deactivated at this point
-    artnet.setup( MY_IP );
+	artnet.setup( MY_IP );
+	ledPixelsL.allocate(LED_WIDTH_L, 1, OF_IMAGE_COLOR);
+	ledPixelsC.allocate(LED_WIDTH_C, 1, OF_IMAGE_COLOR);
+	ledPixelsR.allocate(LED_WIDTH_R, 1, OF_IMAGE_COLOR);
+	ledStrip.allocate(LED_STRIP_LENGTH, 1, OF_IMAGE_COLOR);
     
-    ofSetFrameRate( 30 );
+	// UDP for Sync Signal
+
+	udpConnection.Create();
+	udpConnection.Bind(UDP_PORT);
+	udpConnection.SetNonBlocking(true);
     
+    // MOVIE PLAYER
     
-    
-    ledPixelsL.allocate( LED_WIDTH_L, 1, OF_IMAGE_COLOR );
-    ledPixelsC.allocate( LED_WIDTH_C, 1, OF_IMAGE_COLOR );
-    ledPixelsR.allocate( LED_WIDTH_R, 1, OF_IMAGE_COLOR );
-    ledStrip.allocate( LED_STRIP_LENGTH, 1, OF_IMAGE_COLOR );
-    
-    playerL.loadMovie( "movies/ambilight-blue.mp4" );
-    playerL.play();
-    
+	playerL.loadMovie( "movies/ambilight-blue.mp4" );
+	playerL.play();
     playerC.loadMovie( "movies/boost_blue_320.mp4" );
-    playerC.play();
-    
+	playerC.play();
     playerR.loadMovie( "movies/boost_blue_320.mp4" );
-    playerR.play();
+	playerR.play();
     
-    
+    // GUI
+
     gui.setup("3D Ambilight");
     bShowGui = true;
     
@@ -67,6 +74,13 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
     ofSetWindowTitle( ofToString( ofGetFrameRate(), 2 ) );
+
+	char udpMessage[1000];
+	udpConnection.Receive(udpMessage, 1000);
+	string message = udpMessage;
+	if (message != "") {
+		syncPlayers(0);
+	}
     
     playerL.update();
     playerC.update();
@@ -156,6 +170,12 @@ void ofApp::draw(){
     
 }
 
+void ofApp::syncPlayers(float pct) {
+	playerL.setPosition(0);
+	playerC.setPosition(0);
+	playerR.setPosition(0);
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
@@ -163,6 +183,9 @@ void ofApp::keyPressed(int key){
         case 'f':
             ofToggleFullscreen();
             break;
+		case 'r':
+			syncPlayers( 0 );
+			break;
         case OF_KEY_TAB:
             bShowGui = !bShowGui;
             break;
