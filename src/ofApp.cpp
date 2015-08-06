@@ -79,7 +79,9 @@ void ofApp::update() {
 	udpConnection.Receive(udpMessage, 1000);
 	string message = udpMessage;
 	if (message != "") {
-		syncPlayers(0);
+		float target = 0;
+		target = ofToFloat(message);
+		syncPlayers(target);
 	}
     
     playerL.update();
