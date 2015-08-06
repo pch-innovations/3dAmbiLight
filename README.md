@@ -6,9 +6,13 @@ Ambilight for 3D hologram, reads pixels from 3 videos (each from a different per
 
 Software
 
+* openFrameworks (tested using git version with Visual Studio 2015)
+* ofxGui (comes with oF)
+* [ofxUDPManager]()
 * [ofxArtnet](https://github.com/hiroyuki/ofxArtnet)
+* on Windows, make sure you have the [K-Lite Codec Pack](http://www.codecguide.com/download_kl.htm) installed to play videos
 
 Hardware
 
-* DMX-compatible LED strips, e.g. via Enttec ODE Artnet-Controller
+* Artnet-compatible LED controller, e.g. via Enttec ODE
 
