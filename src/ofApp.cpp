@@ -12,7 +12,7 @@
 
 const char* MY_IP = "10.0.0.1";
 const char* CONTROLLER_IP = "10.7.159.92";
-const int UDP_PORT = 11999;
+const int UDP_PORT = 3839;
     
 const int LED_WIDTH_L = 40; // number of leds for strip 1
 const int LED_WIDTH_C = 40;
@@ -32,6 +32,7 @@ void ofApp::setup() {
     // make sure the firewall is deactivated at this point
     
 	artnet.setup( MY_IP );
+	bArtnet = false;
 	ledPixelsL.allocate(LED_WIDTH_L, 1, OF_IMAGE_COLOR);
 	ledPixelsC.allocate(LED_WIDTH_C, 1, OF_IMAGE_COLOR);
 	ledPixelsR.allocate(LED_WIDTH_R, 1, OF_IMAGE_COLOR);
@@ -68,17 +69,19 @@ void ofApp::setup() {
     gui.add( brightnessR.set( "Brightness Right", 1.0, 0, 10 ) );
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
     gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
-    
+ 
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
     ofSetWindowTitle( ofToString( ofGetFrameRate(), 2 ) );
 
-	char udpMessage[1000];
+	char udpMessage[100];
 	udpConnection.Receive(udpMessage, 1000);
 	string message = udpMessage;
 	if (message != "") {
+		cout << "UDP MESSAGE " << message << endl;
 		float target = 0;
 		target = ofToFloat(message);
 		syncPlayers(target);
@@ -123,9 +126,11 @@ void ofApp::update() {
     
     ledStrip.update();
     
-    artnet.sendDmx( CONTROLLER_IP,
-                   ledStrip.getPixels(),
-                   LED_STRIP_LENGTH * 3);
+	if (bArtnet) {
+		artnet.sendDmx(CONTROLLER_IP,
+			ledStrip.getPixels(),
+			LED_STRIP_LENGTH * 3);
+	}
 }
 
 //--------------------------------------------------------------
@@ -182,6 +187,9 @@ void ofApp::syncPlayers(float pct) {
 void ofApp::keyPressed(int key){
     
     switch (key) {
+		case 'a':
+			bArtnet = !bArtnet;
+			break;
         case 'f':
             ofToggleFullscreen();
             break;

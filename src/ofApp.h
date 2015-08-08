@@ -27,6 +27,7 @@ public:
 	void syncPlayers(float pct);
     
     ofxArtnet artnet;
+	bool bArtnet;
 
 	ofxUDPManager udpConnection;
     
