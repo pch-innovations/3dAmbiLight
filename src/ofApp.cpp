@@ -48,13 +48,16 @@ void ofApp::setup() {
     // MOVIE PLAYER
     
 	cout << "Loading movies..." << endl;
-	playerL.loadMovie("movies/ambilight-blue.mp4" );
+	playerL.loadMovie("movies/ambilight-sequenz1.mp4" );
 	playerL.play();
-    playerC.loadMovie( "movies/boost_blue_320.mp4" );
+	cout << "Left: " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
+    playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerC.play();
-    playerR.loadMovie( "movies/boost_blue_320.mp4" );
+	cout << "Left: " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
+	playerR.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerR.play();
-    
+	cout << "Left: " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
+
     // GUI
 
     gui.setup("3D Ambilight");
@@ -145,36 +148,36 @@ void ofApp::draw(){
     ofBackground(0);
     
     
-    int scaleL = 8;
-    playerL.draw( 0, 20, playerL.getWidth() * 8, playerL.getHeight() * 8);
-    ledPixelsL.draw( 0, 400, LED_WIDTH_L*8, 1*8 );
+    int scaleL = 6;
+    playerL.draw( 0, 20, playerL.getWidth() * scaleL, playerL.getHeight() * scaleL);
+    ledPixelsL.draw( 0, 400, LED_WIDTH_L*scaleL, 1*scaleL );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
     ofNoFill();
-    ofRect( 0, 20 + scanYL * 8, LED_WIDTH_L * 8, 8 );
+    ofRect( 0, 20 + scanYL * scaleL, LED_WIDTH_L * scaleL, scaleL );
     ofPopStyle();
     
     
-    int scaleC = 1;
+    int scaleC = 6;
     playerC.draw(400, 20, playerC.getWidth() * scaleC,  playerC.getHeight() * scaleC);
-    ledPixelsC.draw( 400, 400, LED_WIDTH_C*8, 1*8 );
+    ledPixelsC.draw( 400, 400, LED_WIDTH_C*scaleC, 1*scaleC );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
     ofNoFill();
-    ofRect( 400, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, 8 );
+    ofRect( 400, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, scaleC );
     ofPopStyle();
     
     
-    int scaleR = 1;
+    int scaleR = 6;
     playerR.draw(800, 20, playerR.getWidth() * scaleR,  playerR.getHeight() * scaleR);
-    ledPixelsR.draw( 800, 400, LED_WIDTH_R*8, 1*8 );
+    ledPixelsR.draw( 800, 400, LED_WIDTH_R*scaleR, 1*scaleR );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
     ofNoFill();
-    ofRect( 800, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, 8 );
+    ofRect( 800, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, scaleR );
     ofPopStyle();
     
     
