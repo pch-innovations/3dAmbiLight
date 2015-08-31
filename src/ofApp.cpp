@@ -30,9 +30,9 @@ void ofApp::setup() {
 
 	// ARTNET / DMX
     // make sure the firewall is deactivated at this point
-    
+	
+	cout << "Setting up Artnet connection from " << MY_IP << " to " << CONTROLLER_IP << endl;
 	artnet.setup( MY_IP );
-	bArtnet = false;
 	ledPixelsL.allocate(LED_WIDTH_L, 1, OF_IMAGE_COLOR);
 	ledPixelsC.allocate(LED_WIDTH_C, 1, OF_IMAGE_COLOR);
 	ledPixelsR.allocate(LED_WIDTH_R, 1, OF_IMAGE_COLOR);
@@ -40,12 +40,14 @@ void ofApp::setup() {
     
 	// UDP for Sync Signal
 
+	cout << "Listening to UDP sync signal on port " << UDP_PORT << endl;
 	udpConnection.Create();
 	udpConnection.Bind(UDP_PORT);
 	udpConnection.SetNonBlocking(true);
     
     // MOVIE PLAYER
     
+	cout << "Loading movies..." << endl;
 	playerL.loadMovie("movies/ambilight-blue.mp4" );
 	playerL.play();
     playerC.loadMovie( "movies/boost_blue_320.mp4" );
@@ -57,6 +59,9 @@ void ofApp::setup() {
 
     gui.setup("3D Ambilight");
     bShowGui = true;
+
+	gui.add( bArtnet.set( "LED Lights", false ) );
+	gui.add( bUdpSync.set( "Video Sync", false ) );
     
     gui.add( brightnessL.set( "Brightness Left", 1.0, 0, 10 ) );
     gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
@@ -70,20 +75,23 @@ void ofApp::setup() {
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
     gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
  
+	cout << "Setup finished." << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
     ofSetWindowTitle( ofToString( ofGetFrameRate(), 2 ) );
 
-	char udpMessage[1000];
-	udpConnection.Receive(udpMessage, 1000);
-	string message = udpMessage;
-	if (message != "") {
-		cout << "UDP MESSAGE " << message << endl;
-		float target = 0;
-		target = ofToFloat(message);
-		syncPlayers(target);
+	if (bUdpSync) {
+		char udpMessage[1000];
+		udpConnection.Receive(udpMessage, 1000);
+		string message = udpMessage;
+		if (message != "") {
+			cout << "UDP MESSAGE " << message << endl;
+			float target = 0;
+			target = ofToFloat(message);
+			syncPlayers(target);
+		}
 	}
     
 	playerL.update();
@@ -188,6 +196,9 @@ void ofApp::keyPressed(int key){
     switch (key) {
 		case 'a':
 			bArtnet = !bArtnet;
+			break;
+		case 's':
+			bUdpSync = !bUdpSync;
 			break;
         case 'f':
             ofToggleFullscreen();

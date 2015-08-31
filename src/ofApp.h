@@ -27,9 +27,10 @@ public:
 	void syncPlayers(float pct);
     
     ofxArtnet artnet;
-	bool bArtnet;
+	ofParameter<bool> bArtnet;
 
 	ofxUDPManager udpConnection;
+	ofParameter<bool> bUdpSync;
     
     ofImage ledStrip, ledPixelsL, ledPixelsC, ledPixelsR;
     ofVideoPlayer playerL, playerC, playerR;
