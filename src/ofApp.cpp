@@ -1,22 +1,14 @@
 #include "ofApp.h"
 
 
-/*
- 
- TODO:
- 
- - Sync
- 
- */
-
-
 const char* MY_IP = "10.0.0.1";
 const char* CONTROLLER_IP = "10.7.159.92";
 const int UDP_PORT = 3839;
-    
-const int LED_WIDTH_L = 40; // number of leds for strip 1
-const int LED_WIDTH_C = 40;
-const int LED_WIDTH_R = 40;
+
+// number of leds per side
+const int LED_WIDTH_L = 30;
+const int LED_WIDTH_C = 30; // this one is doubled now! pattern is L - C - C - R 
+const int LED_WIDTH_R = 30;
 const int LED_STRIP_LENGTH = 120;
 
 
@@ -132,7 +124,8 @@ void ofApp::update() {
     
     ledPixelsL.getPixelsRef().pasteInto(ledStrip, 0, 0 );
     ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0 );
-    ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0 );
+	ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0); // center is doubled!
+    ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C + LED_WIDTH_C, 0 );
     
     ledStrip.update();
     
