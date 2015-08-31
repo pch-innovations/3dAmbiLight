@@ -38,7 +38,7 @@ public:
     ofParameter<float> brightnessL, brightnessC, brightnessR;
     ofParameter<float> saturationL, saturationC, saturationR;
     ofParameter<int> scanYL, scanYC, scanYR;
-    
+
     ofxPanel gui;
     bool bShowGui;
     

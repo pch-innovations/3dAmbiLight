@@ -42,13 +42,13 @@ void ofApp::setup() {
 	cout << "Loading movies..." << endl;
 	playerL.loadMovie("movies/ambilight-sequenz1.mp4" );
 	playerL.play();
-	cout << "Left: " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
+	cout << "Left   : " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
     playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerC.play();
-	cout << "Left: " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
+	cout << "Center : " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
 	playerR.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerR.play();
-	cout << "Left: " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
+	cout << "Right  : " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
 
     // GUI
 
@@ -69,6 +69,9 @@ void ofApp::setup() {
     gui.add( brightnessR.set( "Brightness Right", 1.0, 0, 10 ) );
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
     gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
+
+	cout << "Loading settings..." << endl;
+	gui.loadFromFile("settings.xml");
  
 	cout << "Setup finished." << endl;
 }
