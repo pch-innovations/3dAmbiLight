@@ -46,7 +46,7 @@ void ofApp::setup() {
     
     // MOVIE PLAYER
     
-	playerL.loadMovie( "movies/ambilight-blue.mp4" );
+	playerL.loadMovie("movies/ambilight-blue.mp4" );
 	playerL.play();
     playerC.loadMovie( "movies/boost_blue_320.mp4" );
 	playerC.play();
@@ -70,14 +70,13 @@ void ofApp::setup() {
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
     gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
  
-	
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
     ofSetWindowTitle( ofToString( ofGetFrameRate(), 2 ) );
 
-	char udpMessage[100];
+	char udpMessage[1000];
 	udpConnection.Receive(udpMessage, 1000);
 	string message = udpMessage;
 	if (message != "") {
@@ -87,7 +86,7 @@ void ofApp::update() {
 		syncPlayers(target);
 	}
     
-    playerL.update();
+	playerL.update();
     playerC.update();
     playerR.update();
     

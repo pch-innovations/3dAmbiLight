@@ -76,7 +76,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxArtnet\libs;..\..\..\addons\ofxArtnet\src;..\..\..\addons\ofxArtnet\libs\artnet;..\..\..\addons\ofxArtnet\libs\artnet\include;..\..\..\addons\ofxArtnet\libs\artnet\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxArtnet\libs;..\..\..\addons\ofxArtnet\src;..\..\..\addons\ofxArtnet\libs\artnet;..\..\..\addons\ofxArtnet\libs\artnet\include;..\..\..\addons\ofxArtnet\libs\artnet\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
