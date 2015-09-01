@@ -32,6 +32,7 @@ public:
 	ofxUDPManager udpConnection;
 	ofParameter<bool> bUdpSync;
     
+	ofImage videoImageL, videoImageC, videoImageR;
     ofImage ledStrip, ledPixelsL, ledPixelsC, ledPixelsR;
     ofVideoPlayer playerL, playerC, playerR;
     

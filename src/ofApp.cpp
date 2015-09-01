@@ -50,6 +50,14 @@ void ofApp::setup() {
 	playerR.play();
 	cout << "Right  : " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
 
+	videoImageL.allocate( LED_WIDTH_L, playerL.getHeight() / ( playerL.getWidth() / LED_WIDTH_L ), OF_IMAGE_COLOR );
+	cout << "Buffer Left   : " << videoImageL.getWidth() << "x" << videoImageL.getHeight() << "px" << endl;
+	videoImageC.allocate( LED_WIDTH_C, playerC.getHeight() / ( playerC.getWidth() / LED_WIDTH_C ), OF_IMAGE_COLOR );
+	cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
+	videoImageR.allocate( LED_WIDTH_R, playerR.getHeight() / ( playerR.getWidth() / LED_WIDTH_R ), OF_IMAGE_COLOR );
+	cout << "Buffer Right  : " << videoImageR.getWidth() << "x" << videoImageR.getHeight() << "px" << endl;
+
+
     // GUI
 
     gui.setup("3D Ambilight");
@@ -60,15 +68,15 @@ void ofApp::setup() {
     
     gui.add( brightnessL.set( "Brightness Left", 1.0, 0, 10 ) );
     gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
-    gui.add( scanYL.set( "Scan Row Left", playerL.getHeight() / 2, 0, playerL.getHeight() ) );
+    gui.add( scanYL.set( "Scan Row Left", videoImageL.getHeight() / 2, 0, videoImageL.getHeight() ) );
     
     gui.add( brightnessC.set( "Brightness Center", 1.0, 0, 10 ) );
     gui.add( saturationC.set( "Saturation Center", 1.0, 0, 5 ) );
-    gui.add( scanYC.set( "Scan Row Center", playerC.getHeight() / 2, 0, playerC.getHeight() ) );
+    gui.add( scanYC.set( "Scan Row Center", videoImageC.getHeight() / 2, 0, videoImageC.getHeight() ) );
     
     gui.add( brightnessR.set( "Brightness Right", 1.0, 0, 10 ) );
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
-    gui.add( scanYR.set( "Scan Row Right", playerR.getHeight() / 2, 0, playerR.getHeight() ) );
+    gui.add( scanYR.set( "Scan Row Right", videoImageR.getHeight() / 2, 0, videoImageR.getHeight() ) );
 
 	cout << "Loading settings..." << endl;
 	gui.loadFromFile("settings.xml");
@@ -96,10 +104,17 @@ void ofApp::update() {
     playerC.update();
     playerR.update();
     
-    //playerL.getPixelsRef().resizeTo( ledPixelsL, OF_INTERPOLATE_NEAREST_NEIGHBOR );
-    playerL.getPixelsRef().cropTo( ledPixelsL, 0, scanYL, LED_WIDTH_L, 1);
-    playerC.getPixelsRef().cropTo( ledPixelsC, 0, scanYL, LED_WIDTH_C, 1);
-    playerR.getPixelsRef().cropTo( ledPixelsR, 0, scanYL, LED_WIDTH_R, 1);
+    playerL.getPixelsRef().resizeTo( videoImageL, OF_INTERPOLATE_NEAREST_NEIGHBOR );
+	playerC.getPixelsRef().resizeTo( videoImageC, OF_INTERPOLATE_NEAREST_NEIGHBOR );
+	playerR.getPixelsRef().resizeTo( videoImageR, OF_INTERPOLATE_NEAREST_NEIGHBOR );
+
+	videoImageL.update();
+	videoImageC.update();
+	videoImageR.update();
+
+	videoImageL.getPixelsRef().cropTo( ledPixelsL, 0, scanYL, LED_WIDTH_L, 1);
+	videoImageC.getPixelsRef().cropTo( ledPixelsC, 0, scanYL, LED_WIDTH_C, 1);
+	videoImageR.getPixelsRef().cropTo( ledPixelsR, 0, scanYL, LED_WIDTH_R, 1);
     
     
     for (int i = 0; i < LED_WIDTH_L; i++) {
@@ -144,8 +159,8 @@ void ofApp::draw(){
     ofBackground(0);
     
     
-    int scaleL = 6;
-    playerL.draw( 0, 20, playerL.getWidth() * scaleL, playerL.getHeight() * scaleL);
+    int scaleL = 8;
+    videoImageL.draw( 0, 20, videoImageL.getWidth() * scaleL, videoImageL.getHeight() * scaleL);
     ledPixelsL.draw( 0, 400, LED_WIDTH_L*scaleL, 1*scaleL );
     
     ofPushStyle();
@@ -155,8 +170,8 @@ void ofApp::draw(){
     ofPopStyle();
     
     
-    int scaleC = 6;
-    playerC.draw(400, 20, playerC.getWidth() * scaleC,  playerC.getHeight() * scaleC);
+    int scaleC = 8;
+	videoImageC.draw(400, 20, videoImageC.getWidth() * scaleC, videoImageC.getHeight() * scaleC);
     ledPixelsC.draw( 400, 400, LED_WIDTH_C*scaleC, 1*scaleC );
     
     ofPushStyle();
@@ -166,8 +181,8 @@ void ofApp::draw(){
     ofPopStyle();
     
     
-    int scaleR = 6;
-    playerR.draw(800, 20, playerR.getWidth() * scaleR,  playerR.getHeight() * scaleR);
+    int scaleR = 8;
+	videoImageR.draw(800, 20, videoImageR.getWidth() * scaleR, videoImageR.getHeight() * scaleR);
     ledPixelsR.draw( 800, 400, LED_WIDTH_R*scaleR, 1*scaleR );
     
     ofPushStyle();
