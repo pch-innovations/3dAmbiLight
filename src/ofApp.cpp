@@ -11,6 +11,8 @@ const int LED_WIDTH_C = 30; // this one is doubled now! pattern is L - C - C - R
 const int LED_WIDTH_R = 30;
 const int LED_STRIP_LENGTH = 120;
 
+const bool ONE_SOURCE = true; // use the same video input for all led strips (playerL)
+
 
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -40,7 +42,7 @@ void ofApp::setup() {
     // MOVIE PLAYER
     
 	cout << "Loading movies..." << endl;
-	playerL.loadMovie("movies/ambilight-sequenz1.mp4" );
+	playerL.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerL.play();
 	playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerC.play();
@@ -57,6 +59,9 @@ void ofApp::setup() {
 	cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
 	cout << "Buffer Right  : " << videoImageR.getWidth() << "x" << videoImageR.getHeight() << "px" << endl;
 
+	if (ONE_SOURCE) {
+		cout << "Using ONLY LEFT VIDEO as input for all LED strips!" << endl;
+	}
 
     // GUI
 
@@ -66,15 +71,15 @@ void ofApp::setup() {
 	gui.add( bArtnet.set( "LED Lights", false ) );
 	gui.add( bUdpSync.set( "Video Sync", false ) );
     
-    gui.add( brightnessL.set( "Brightness Left", 1.0, 0, 10 ) );
+    gui.add( brightnessL.set( "Brightness Left", 3.0, 0, 10 ) );
     gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
     gui.add( scanYL.set( "Scan Row Left", videoImageL.getHeight() / 2, 0, videoImageL.getHeight() ) );
     
-    gui.add( brightnessC.set( "Brightness Center", 1.0, 0, 10 ) );
+    gui.add( brightnessC.set( "Brightness Center", 3.0, 0, 10 ) );
     gui.add( saturationC.set( "Saturation Center", 1.0, 0, 5 ) );
     gui.add( scanYC.set( "Scan Row Center", videoImageC.getHeight() / 2, 0, videoImageC.getHeight() ) );
     
-    gui.add( brightnessR.set( "Brightness Right", 1.0, 0, 10 ) );
+    gui.add( brightnessR.set( "Brightness Right", 3.0, 0, 10 ) );
     gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
     gui.add( scanYR.set( "Scan Row Right", videoImageR.getHeight() / 2, 0, videoImageR.getHeight() ) );
 
@@ -103,20 +108,28 @@ void ofApp::update() {
 	}
     
 	playerL.update();
-    playerC.update();
-    playerR.update();
+	if (!ONE_SOURCE) {
+		playerC.update();
+		playerR.update();
+	}
     
     playerL.getPixelsRef().resizeTo( videoImageL, OF_INTERPOLATE_NEAREST_NEIGHBOR );
-	playerC.getPixelsRef().resizeTo( videoImageC, OF_INTERPOLATE_NEAREST_NEIGHBOR );
-	playerR.getPixelsRef().resizeTo( videoImageR, OF_INTERPOLATE_NEAREST_NEIGHBOR );
+	if (!ONE_SOURCE) {
+		playerC.getPixelsRef().resizeTo(videoImageC, OF_INTERPOLATE_NEAREST_NEIGHBOR);
+		playerR.getPixelsRef().resizeTo(videoImageR, OF_INTERPOLATE_NEAREST_NEIGHBOR);
+	}
 
 	videoImageL.update();
-	videoImageC.update();
-	videoImageR.update();
+	if (!ONE_SOURCE) {
+		videoImageC.update();
+		videoImageR.update();
+	}
 
 	videoImageL.getPixelsRef().cropTo( ledPixelsL, 0, scanYL, LED_WIDTH_L, 1);
-	videoImageC.getPixelsRef().cropTo( ledPixelsC, 0, scanYL, LED_WIDTH_C, 1);
-	videoImageR.getPixelsRef().cropTo( ledPixelsR, 0, scanYL, LED_WIDTH_R, 1);
+	if (!ONE_SOURCE) {
+		videoImageC.getPixelsRef().cropTo(ledPixelsC, 0, scanYL, LED_WIDTH_C, 1);
+		videoImageR.getPixelsRef().cropTo(ledPixelsR, 0, scanYL, LED_WIDTH_R, 1);
+	}
     
     
     for (int i = 0; i < LED_WIDTH_L; i++) {
@@ -125,27 +138,38 @@ void ofApp::update() {
         c.setSaturation( c.getSaturation() * saturationL );
         ledPixelsL.setColor( i, 0, c );
     }
-    for (int i = 0; i < LED_WIDTH_C; i++) {
-        ofColor c = ledPixelsC.getColor( i, 0 );
-        c.setBrightness( c.getBrightness() * brightnessC );
-        c.setSaturation( c.getSaturation() * saturationC );
-        ledPixelsC.setColor( i, 0, c );
-    }
-    for (int i = 0; i < LED_WIDTH_R; i++) {
-        ofColor c = ledPixelsR.getColor( i, 0 );
-        c.setBrightness( c.getBrightness() * brightnessR );
-        c.setSaturation( c.getSaturation() * saturationR );
-        ledPixelsR.setColor( i, 0, c );
-    }
+	if (!ONE_SOURCE) {
+		for (int i = 0; i < LED_WIDTH_C; i++) {
+			ofColor c = ledPixelsC.getColor(i, 0);
+			c.setBrightness(c.getBrightness() * brightnessC);
+			c.setSaturation(c.getSaturation() * saturationC);
+			ledPixelsC.setColor(i, 0, c);
+		}
+		for (int i = 0; i < LED_WIDTH_R; i++) {
+			ofColor c = ledPixelsR.getColor(i, 0);
+			c.setBrightness(c.getBrightness() * brightnessR);
+			c.setSaturation(c.getSaturation() * saturationR);
+			ledPixelsR.setColor(i, 0, c);
+		}
+	}
     
     ledPixelsL.update();
-    ledPixelsC.update();
-    ledPixelsR.update();
+	if (!ONE_SOURCE) {
+		ledPixelsC.update();
+		ledPixelsR.update();
+	}
     
     ledPixelsL.getPixelsRef().pasteInto(ledStrip, 0, 0 );
-    ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0 );
-	ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0); // center is doubled!
-    ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C + LED_WIDTH_C, 0 );
+	if (!ONE_SOURCE) {
+		ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0);
+		ledPixelsC.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0); // center is doubled!
+		ledPixelsR.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C + LED_WIDTH_C, 0);
+	}
+	else {
+		ledPixelsL.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L, 0);
+		ledPixelsL.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C, 0); // center is doubled!
+		ledPixelsL.getPixelsRef().pasteInto(ledStrip, LED_WIDTH_L + LED_WIDTH_C + LED_WIDTH_C, 0);
+	}
     
     ledStrip.update();
     

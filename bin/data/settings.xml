@@ -3,11 +3,11 @@
 	<Video_Sync>0</Video_Sync>
 	<Brightness_Left>1</Brightness_Left>
 	<Saturation_Left>1</Saturation_Left>
-	<Scan_Row_Left>11</Scan_Row_Left>
+	<Scan_Row_Left>5</Scan_Row_Left>
 	<Brightness_Center>1</Brightness_Center>
 	<Saturation_Center>1</Saturation_Center>
-	<Scan_Row_Center>11</Scan_Row_Center>
+	<Scan_Row_Center>5</Scan_Row_Center>
 	<Brightness_Right>1</Brightness_Right>
 	<Saturation_Right>1</Saturation_Right>
-	<Scan_Row_Right>11</Scan_Row_Right>
+	<Scan_Row_Right>5</Scan_Row_Right>
 </3D_Ambilight>
