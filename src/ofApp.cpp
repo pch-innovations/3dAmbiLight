@@ -44,20 +44,28 @@ void ofApp::setup() {
 	cout << "Loading movies..." << endl;
 	playerL.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerL.play();
-	playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
-	playerC.play();
-	playerR.loadMovie( "movies/ambilight-sequenz1.mp4" );
-	playerR.play(); 
+	if (!ONE_SOURCE) {
+		playerC.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerC.play();
+		playerR.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerR.play();
+	}
 	cout << "Left   : " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
-	cout << "Center : " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
-	cout << "Right  : " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
+	if (!ONE_SOURCE) {
+		cout << "Center : " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
+		cout << "Right  : " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
+	}
 
 	videoImageL.allocate( LED_WIDTH_L, playerL.getHeight() / ( playerL.getWidth() / LED_WIDTH_L ), OF_IMAGE_COLOR );
-	videoImageC.allocate( LED_WIDTH_C, playerC.getHeight() / ( playerC.getWidth() / LED_WIDTH_C ), OF_IMAGE_COLOR );
-	videoImageR.allocate( LED_WIDTH_R, playerR.getHeight() / ( playerR.getWidth() / LED_WIDTH_R ), OF_IMAGE_COLOR );
+	if (!ONE_SOURCE) {
+		videoImageC.allocate(LED_WIDTH_C, playerC.getHeight() / (playerC.getWidth() / LED_WIDTH_C), OF_IMAGE_COLOR);
+		videoImageR.allocate(LED_WIDTH_R, playerR.getHeight() / (playerR.getWidth() / LED_WIDTH_R), OF_IMAGE_COLOR);
+	}
 	cout << "Buffer Left   : " << videoImageL.getWidth() << "x" << videoImageL.getHeight() << "px" << endl;
-	cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
-	cout << "Buffer Right  : " << videoImageR.getWidth() << "x" << videoImageR.getHeight() << "px" << endl;
+	if (!ONE_SOURCE) {
+		cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
+		cout << "Buffer Right  : " << videoImageR.getWidth() << "x" << videoImageR.getHeight() << "px" << endl;
+	}
 
 	if (ONE_SOURCE) {
 		cout << "Using ONLY LEFT VIDEO as input for all LED strips!" << endl;
@@ -69,19 +77,21 @@ void ofApp::setup() {
     bShowGui = true;
 
 	gui.add( bArtnet.set( "LED Lights", false ) );
-	gui.add( bUdpSync.set( "Video Sync", false ) );
+	gui.add( bUdpSync.set( "Video Sync", true ) );
     
     gui.add( brightnessL.set( "Brightness Left", 3.0, 0, 10 ) );
     gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
     gui.add( scanYL.set( "Scan Row Left", videoImageL.getHeight() / 2, 0, videoImageL.getHeight() ) );
-    
-    gui.add( brightnessC.set( "Brightness Center", 3.0, 0, 10 ) );
-    gui.add( saturationC.set( "Saturation Center", 1.0, 0, 5 ) );
-    gui.add( scanYC.set( "Scan Row Center", videoImageC.getHeight() / 2, 0, videoImageC.getHeight() ) );
-    
-    gui.add( brightnessR.set( "Brightness Right", 3.0, 0, 10 ) );
-    gui.add( saturationR.set( "Saturation Right", 1.0, 0, 5 ) );
-    gui.add( scanYR.set( "Scan Row Right", videoImageR.getHeight() / 2, 0, videoImageR.getHeight() ) );
+
+	if (!ONE_SOURCE) {
+		gui.add(brightnessC.set("Brightness Center", 3.0, 0, 10));
+		gui.add(saturationC.set("Saturation Center", 1.0, 0, 5));
+		gui.add(scanYC.set("Scan Row Center", videoImageC.getHeight() / 2, 0, videoImageC.getHeight()));
+
+		gui.add(brightnessR.set("Brightness Right", 3.0, 0, 10));
+		gui.add(saturationR.set("Saturation Right", 1.0, 0, 5));
+		gui.add(scanYR.set("Scan Row Right", videoImageR.getHeight() / 2, 0, videoImageR.getHeight()));
+	}
 
 	cout << "Loading settings..." << endl;
 	gui.loadFromFile("settings.xml");
@@ -195,30 +205,29 @@ void ofApp::draw(){
     ofRect( 0, 20 + scanYL * scaleL, LED_WIDTH_L * scaleL, scaleL );
     ofPopStyle();
     
-    
-    int scaleC = 8;
-	videoImageC.draw(350, 20, videoImageC.getWidth() * scaleC, videoImageC.getHeight() * scaleC);
-    ledPixelsC.draw( 350, 350, LED_WIDTH_C*scaleC, 1*scaleC );
-    
-    ofPushStyle();
-    ofSetColor( ofColor::white );
-    ofNoFill();
-    ofRect( 350, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, scaleC );
-    ofPopStyle();
-    
-    
-    int scaleR = 8;
-	videoImageR.draw(700, 20, videoImageR.getWidth() * scaleR, videoImageR.getHeight() * scaleR);
-    ledPixelsR.draw( 700, 350, LED_WIDTH_R*scaleR, 1*scaleR );
-    
-    ofPushStyle();
-    ofSetColor( ofColor::white );
-    ofNoFill();
-    ofRect( 700, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, scaleR );
-    ofPopStyle();
-    
-    
-    
+	if (!ONE_SOURCE) {
+		int scaleC = 8;
+		videoImageC.draw(350, 20, videoImageC.getWidth() * scaleC, videoImageC.getHeight() * scaleC);
+		ledPixelsC.draw(350, 350, LED_WIDTH_C*scaleC, 1 * scaleC);
+
+		ofPushStyle();
+		ofSetColor(ofColor::white);
+		ofNoFill();
+		ofRect(350, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, scaleC);
+		ofPopStyle();
+
+
+		int scaleR = 8;
+		videoImageR.draw(700, 20, videoImageR.getWidth() * scaleR, videoImageR.getHeight() * scaleR);
+		ledPixelsR.draw(700, 350, LED_WIDTH_R*scaleR, 1 * scaleR);
+
+		ofPushStyle();
+		ofSetColor(ofColor::white);
+		ofNoFill();
+		ofRect(700, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, scaleR);
+		ofPopStyle();
+	}
+
     if ( bShowGui )
         gui.draw();
     
@@ -226,8 +235,10 @@ void ofApp::draw(){
 
 void ofApp::syncPlayers(float pct) {
 	playerL.setPosition(0);
-	playerC.setPosition(0);
-	playerR.setPosition(0);
+	if (!ONE_SOURCE) {
+		playerC.setPosition(0);
+		playerR.setPosition(0);
+	}
 }
 
 //--------------------------------------------------------------
