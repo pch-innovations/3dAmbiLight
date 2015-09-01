@@ -51,11 +51,14 @@ void ofApp::setup() {
     
 	cout << "Loading movies..." << endl;
 	playerL.loadMovie( "movies/ambilight-sequenz1.mp4" );
+	playerL.setLoopState(OF_LOOP_NORMAL);
 	playerL.play();
 	if (!ONE_SOURCE) {
 		playerC.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerC.setLoopState(OF_LOOP_NORMAL);
 		playerC.play();
 		playerR.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerR.setLoopState(OF_LOOP_NORMAL);
 		playerR.play();
 	}
 	cout << "Left   : " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
@@ -84,7 +87,7 @@ void ofApp::setup() {
     gui.setup("3D Ambilight");
     bShowGui = true;
 
-	gui.add( bArtnet.set( "LED Lights", false ) );
+	gui.add( bArtnet.set( "LED Lights", true ) );
 	gui.add( bUdpSync.set( "Video Sync", true ) );
     
     gui.add( brightnessL.set( "Brightness Left", 3.0, 0, 10 ) );
@@ -245,9 +248,12 @@ void ofApp::draw(){
 
 void ofApp::syncPlayers(float pct) {
 	playerL.setPosition(0);
+	playerL.play();
 	if (!ONE_SOURCE) {
 		playerC.setPosition(0);
+		playerC.play();
 		playerR.setPosition(0);
+		playerR.play();
 	}
 }
 
