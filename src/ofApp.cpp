@@ -20,13 +20,21 @@ void ofApp::setup() {
     ofSetVerticalSync( true );
 
 	ofSetFrameRate(60);
-
+	cout << "_______________________________________" << endl;
+	cout << endl;
+	cout << "        3D AmbiLight Controller        " << endl;
+	cout << endl;
+	cout << "       (c) 2015 PCH Innovations        " << endl;
+	cout << "_______________________________________" << endl;
+	cout << endl;
 
 	// ARTNET / DMX
     // make sure the firewall is deactivated at this point
 	
 	cout << "Setting up Artnet connection from " << MY_IP << " to " << CONTROLLER_IP << endl;
+	artnet.verbose = true;
 	artnet.setup( MY_IP );
+	cout << "Found " << artnet.nodes_found << " nodes." << endl;
 	ledPixelsL.allocate(LED_WIDTH_L, 1, OF_IMAGE_COLOR);
 	ledPixelsC.allocate(LED_WIDTH_C, 1, OF_IMAGE_COLOR);
 	ledPixelsR.allocate(LED_WIDTH_R, 1, OF_IMAGE_COLOR);
@@ -184,9 +192,11 @@ void ofApp::update() {
     ledStrip.update();
     
 	if (bArtnet) {
-		artnet.sendDmx(CONTROLLER_IP,
-			ledStrip.getPixels(),
-			LED_STRIP_LENGTH * 3);
+		if (artnet.status == NODES_FOUND) {
+			artnet.sendDmx(CONTROLLER_IP,
+				ledStrip.getPixels(),
+				LED_STRIP_LENGTH * 3);
+		}
 	}
 }
 
