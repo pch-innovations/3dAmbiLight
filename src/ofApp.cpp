@@ -42,19 +42,19 @@ void ofApp::setup() {
 	cout << "Loading movies..." << endl;
 	playerL.loadMovie("movies/ambilight-sequenz1.mp4" );
 	playerL.play();
-	cout << "Left   : " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
-    playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
+	playerC.loadMovie( "movies/ambilight-sequenz1.mp4" );
 	playerC.play();
-	cout << "Center : " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
 	playerR.loadMovie( "movies/ambilight-sequenz1.mp4" );
-	playerR.play();
+	playerR.play(); 
+	cout << "Left   : " << playerL.getMoviePath() << ", " << playerL.getWidth() << "x" << playerL.getHeight() << "px, " << playerL.getDuration() << "s" << endl;
+	cout << "Center : " << playerC.getMoviePath() << ", " << playerC.getWidth() << "x" << playerC.getHeight() << "px, " << playerC.getDuration() << "s" << endl;
 	cout << "Right  : " << playerR.getMoviePath() << ", " << playerR.getWidth() << "x" << playerR.getHeight() << "px, " << playerR.getDuration() << "s" << endl;
 
 	videoImageL.allocate( LED_WIDTH_L, playerL.getHeight() / ( playerL.getWidth() / LED_WIDTH_L ), OF_IMAGE_COLOR );
-	cout << "Buffer Left   : " << videoImageL.getWidth() << "x" << videoImageL.getHeight() << "px" << endl;
 	videoImageC.allocate( LED_WIDTH_C, playerC.getHeight() / ( playerC.getWidth() / LED_WIDTH_C ), OF_IMAGE_COLOR );
-	cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
 	videoImageR.allocate( LED_WIDTH_R, playerR.getHeight() / ( playerR.getWidth() / LED_WIDTH_R ), OF_IMAGE_COLOR );
+	cout << "Buffer Left   : " << videoImageL.getWidth() << "x" << videoImageL.getHeight() << "px" << endl;
+	cout << "Buffer Center : " << videoImageC.getWidth() << "x" << videoImageC.getHeight() << "px" << endl;
 	cout << "Buffer Right  : " << videoImageR.getWidth() << "x" << videoImageR.getHeight() << "px" << endl;
 
 
@@ -89,14 +89,16 @@ void ofApp::update() {
     ofSetWindowTitle( ofToString( ofGetFrameRate(), 2 ) );
 
 	if (bUdpSync) {
-		char udpMessage[1000];
-		udpConnection.Receive(udpMessage, 1000);
-		string message = udpMessage;
-		if (message != "") {
-			cout << "UDP MESSAGE " << message << endl;
-			float target = 0;
-			target = ofToFloat(message);
-			syncPlayers(target);
+		if ( udpConnection.PeekReceive() > 0 ) {
+			char udpMessage[100];
+			udpConnection.Receive(udpMessage, 100);
+			string message = udpMessage;
+			if (message != "") {
+				cout << "UDP MESSAGE " << message << endl;
+				float target = 0;
+				target = ofToFloat(message);
+				syncPlayers(target);
+			}
 		}
 	}
     
