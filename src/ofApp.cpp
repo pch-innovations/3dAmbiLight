@@ -17,7 +17,7 @@ void ofApp::setup() {
     
     ofSetVerticalSync( true );
 
-	ofSetFrameRate(30);
+	ofSetFrameRate(60);
 
 
 	// ARTNET / DMX
@@ -163,7 +163,7 @@ void ofApp::draw(){
     
     int scaleL = 8;
     videoImageL.draw( 0, 20, videoImageL.getWidth() * scaleL, videoImageL.getHeight() * scaleL);
-    ledPixelsL.draw( 0, 400, LED_WIDTH_L*scaleL, 1*scaleL );
+    ledPixelsL.draw( 0, 350, LED_WIDTH_L*scaleL, 1*scaleL );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
@@ -173,24 +173,24 @@ void ofApp::draw(){
     
     
     int scaleC = 8;
-	videoImageC.draw(400, 20, videoImageC.getWidth() * scaleC, videoImageC.getHeight() * scaleC);
-    ledPixelsC.draw( 400, 400, LED_WIDTH_C*scaleC, 1*scaleC );
+	videoImageC.draw(350, 20, videoImageC.getWidth() * scaleC, videoImageC.getHeight() * scaleC);
+    ledPixelsC.draw( 350, 350, LED_WIDTH_C*scaleC, 1*scaleC );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
     ofNoFill();
-    ofRect( 400, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, scaleC );
+    ofRect( 350, 20 + scanYC * scaleC, LED_WIDTH_C * scaleC, scaleC );
     ofPopStyle();
     
     
     int scaleR = 8;
-	videoImageR.draw(800, 20, videoImageR.getWidth() * scaleR, videoImageR.getHeight() * scaleR);
-    ledPixelsR.draw( 800, 400, LED_WIDTH_R*scaleR, 1*scaleR );
+	videoImageR.draw(700, 20, videoImageR.getWidth() * scaleR, videoImageR.getHeight() * scaleR);
+    ledPixelsR.draw( 700, 350, LED_WIDTH_R*scaleR, 1*scaleR );
     
     ofPushStyle();
     ofSetColor( ofColor::white );
     ofNoFill();
-    ofRect( 800, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, scaleR );
+    ofRect( 700, 20 + scanYR * scaleR, LED_WIDTH_R * scaleR, scaleR );
     ofPopStyle();
     
     
@@ -221,6 +221,9 @@ void ofApp::keyPressed(int key){
             break;
 		case 'r':
 			syncPlayers( 0 );
+			break;
+		case 'm':
+			gui.saveToFile("settings.xml");
 			break;
         case OF_KEY_TAB:
             bShowGui = !bShowGui;
