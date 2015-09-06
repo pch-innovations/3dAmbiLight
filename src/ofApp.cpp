@@ -50,14 +50,14 @@ void ofApp::setup() {
     // MOVIE PLAYER
     
 	cout << "Loading movies..." << endl;
-	playerL.loadMovie( "movies/ambilight-sequenz1.mp4" );
+	playerL.loadMovie("movies/ambilight-final320.mp4");
 	playerL.setLoopState(OF_LOOP_NORMAL);
 	playerL.play();
 	if (!ONE_SOURCE) {
-		playerC.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerC.loadMovie("movies/ambilight-final320.mp4");
 		playerC.setLoopState(OF_LOOP_NORMAL);
 		playerC.play();
-		playerR.loadMovie("movies/ambilight-sequenz1.mp4");
+		playerR.loadMovie("movies/ambilight-final320.mp4");
 		playerR.setLoopState(OF_LOOP_NORMAL);
 		playerR.play();
 	}
@@ -90,9 +90,9 @@ void ofApp::setup() {
 	gui.add( bArtnet.set( "LED Lights", true ) );
 	gui.add( bUdpSync.set( "Video Sync", true ) );
     
-    gui.add( brightnessL.set( "Brightness Left", 3.0, 0, 10 ) );
+    gui.add( brightnessL.set( "Brightness Left", 2.0, 0, 10 ) );
     gui.add( saturationL.set( "Saturation Left", 1.0, 0, 5 ) );
-    gui.add( scanYL.set( "Scan Row Left", videoImageL.getHeight() / 2, 0, videoImageL.getHeight() ) );
+    gui.add( scanYL.set( "Scan Row Left", 10, 0, videoImageL.getHeight() ) );
 
 	if (!ONE_SOURCE) {
 		gui.add(brightnessC.set("Brightness Center", 3.0, 0, 10));
@@ -121,8 +121,8 @@ void ofApp::update() {
 			string message = udpMessage;
 			if (message != "") {
 				cout << "UDP MESSAGE " << message << endl;
-				float target = 0;
-				target = ofToFloat(message);
+				int target = 0;
+				target = ofToInt(message);
 				syncPlayers(target);
 			}
 		}
@@ -246,13 +246,13 @@ void ofApp::draw(){
     
 }
 
-void ofApp::syncPlayers(float pct) {
-	playerL.setPosition(0);
+void ofApp::syncPlayers(int frame) {
+	playerL.setFrame(0);
 	playerL.play();
 	if (!ONE_SOURCE) {
-		playerC.setPosition(0);
+		playerC.setFrame(0);
 		playerC.play();
-		playerR.setPosition(0);
+		playerR.setFrame(0);
 		playerR.play();
 	}
 }

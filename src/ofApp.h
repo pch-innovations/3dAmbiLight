@@ -24,7 +24,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-	void syncPlayers(float pct);
+	void syncPlayers(int frame);
     
     ofxArtnet artnet;
 	ofParameter<bool> bArtnet;
